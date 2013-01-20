@@ -1,0 +1,59 @@
+<html>
+	<header>
+		<title>hello</title>
+		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	</header>
+	<body>
+
+		<div class="navbar navbar-inverse navbar-fixed top">
+			<div class="navbar-inner">
+				<div class="container-fluid">
+					<a href="#" class="brand">Olives demo</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<form class="form-horizontal">
+				<div class="input-append">
+				  <input class="input-xxlarge" id="appendedInputButton" type="text" style="height: 30px">
+				  <button class="btn" type="button">Add task</button>
+				</div>
+			</form>
+		</div>
+
+		<div class="container">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>#</td>
+						<th>Task</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>id</td>
+						<td>Name</td>
+						<td><a href="#"><i class="icon-remove"></i></a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	<script src="libs/require.js"></script>
+	<script>
+		requirejs.config({
+			baseUrl: 'app',
+			paths: {
+				emily: '../libs/emily',
+				olives: '../libs/olives'
+			}
+		});
+
+		requirejs(['demo'], function (Demo) {
+			new Demo(document.querySelector('section'));
+		});
+	</script>
+	</body>
+</html>
