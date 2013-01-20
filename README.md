@@ -34,25 +34,25 @@ function (Store, OObject, Event, Bind) {
 
 Initializing it:
 
-	* A container for the widget (new OObject)
+A container for the widget (new OObject)
 
 ```js
 var widget = new OObject();
 ```
 
-	* A model for the list (new Store([]))
+A model for the list (new Store([]))
 
 ```js
 var list = new Store([]);
 ```
 
-	* A plugin for capturing DOM events
+A plugin for capturing DOM events
 
 ```js
 var event = new Event();
 ```
 
-	* A plugin for binding the data with the dom
+A plugin for binding the data with the dom
 
 ```js
 var bind = new Bind();
