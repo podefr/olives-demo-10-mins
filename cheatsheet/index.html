@@ -17,7 +17,7 @@
 		<div class="widget">
 
 			<div class="container">
-				<input class="input-xxlarge" id="appendedInputButton" type="text" style="height: 30px" placeholder="What's to be done?">
+				<input class="input-xxlarge" id="appendedInputButton" type="text" style="height: 30px" placeholder="What's to be done?" data-event="listen: keydown, addTask">
 			</div>
 
 			<div class="container">
@@ -29,11 +29,11 @@
 							<th>Action</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody data-bind="foreach">
 						<tr>
-							<td>id</td>
-							<td>Name</td>
-							<td><a href="#"><i class="icon-remove"></i></a></td>
+							<td data-bind="bind: getId">id</td>
+							<td data-bind="bind: innerHTML">Name</td>
+							<td><a href="#" data-event="listen: click, removeTask"><i class="icon-remove"></i></a></td>
 						</tr>
 					</tbody>
 				</table>
