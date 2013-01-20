@@ -13,47 +13,46 @@
 			</div>
 		</div>
 
-		<div class="container">
-			<form class="form-horizontal">
-				<div class="input-append">
-				  <input class="input-xxlarge" id="appendedInputButton" type="text" style="height: 30px">
-				  <button class="btn" type="button">Add task</button>
-				</div>
-			</form>
-		</div>
 
-		<div class="container">
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th>#</td>
-						<th>Task</th>
-						<th>Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>id</td>
-						<td>Name</td>
-						<td><a href="#"><i class="icon-remove"></i></a></td>
-					</tr>
-				</tbody>
-			</table>
+		<div class="widget">
+
+			<div class="container">
+				<input class="input-xxlarge" id="appendedInputButton" type="text" style="height: 30px" placeholder="What's to be done?" data-event="listen: keydown, addTask">
+			</div>
+
+			<div class="container">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>#</td>
+							<th>Task</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody data-bind="foreach">
+						<tr>
+							<td data-bind="bind: getId">id</td>
+							<td data-bind="bind: innerHTML">Name</td>
+							<td><a href="#" data-event="listen: click, removeTask"><i class="icon-remove"></i></a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
 		</div>
 
 	<script src="libs/require.js"></script>
+	<script src="libs/Emily.js"></script>
+	<script src="libs/Olives.js"></script>
 	<script>
 		requirejs.config({
-			baseUrl: 'app',
-			paths: {
-				emily: '../libs/emily',
-				olives: '../libs/olives'
-			}
+			baseUrl: 'app'
 		});
 
-		requirejs(['demo'], function (Demo) {
-			new Demo(document.querySelector('section'));
+		requirejs(['todo'], function (Demo) {
+			new Demo(document.querySelector('.widget'));
 		});
 	</script>
+
 	</body>
 </html>
