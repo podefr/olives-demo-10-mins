@@ -94,8 +94,35 @@ Applying the plugins to the dom:
 widget.alive(dom);
 ```
 
-Oops, we have 2:30 left!
+7:30 - Oops, we have 2:30 left!
 ------------------------
+
+We would like to persist the todo list. Let's use Olives LocalStore
+
+```js
+list.sync("todo-demo");
+```
+
+8:00 - 10:00
+------------
+
+As we still have some time left, let's write our own plugin
+
+```html
+<td data-bind="bind: innerHTML" data-custom="prepend: hello">Name</td>
+```
+
+```js
+widget.plugins.addAll({
+	 		'event': event,
+	 		'bind': bind,
+	 		'custom': {
+	 			prepend: function (node, text) {
+	 				node.innerHTML = text + " " + node.innerHTML;
+	 			}
+	 		}
+	 	});
+```
 
 
 

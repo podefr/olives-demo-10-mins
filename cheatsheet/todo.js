@@ -1,6 +1,6 @@
 define(
 [
-	'Store',
+	'LocalStore',
 	'OObject',
 	'Event.plugin',
 	'Bind.plugin'
@@ -33,9 +33,16 @@ function (Store, OObject, Event, Bind) {
 	 		}
 	 	});
 
+	 	list.sync("todo-demo");
+
 	 	widget.plugins.addAll({
 	 		'event': event,
-	 		'bind': bind
+	 		'bind': bind,
+	 		'custom': {
+	 			prepend: function (node, text) {
+	 				node.innerHTML = text + " " + node.innerHTML;
+	 			}
+	 		}
 	 	});
 
 	 	widget.alive(dom);
