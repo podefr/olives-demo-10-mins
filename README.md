@@ -83,7 +83,7 @@ Adding a handler for key events on the remove icon
 
 ```js
 removeTask: function ( event, node ) {
-	list.del( node.getAttribute('data-bind_id') );
+	list.del( node.getAttribute( 'data-bind_id' ) );
 }
 ```
 
@@ -138,7 +138,7 @@ widget.alive( dom );
 We would like to persist the todo list. Let's use Olives LocalStore
 
 ```js
-list.sync("todo-demo");
+list.sync( 'todo-demo' );
 ```
 
 8:30 - 9:00
