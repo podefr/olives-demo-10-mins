@@ -4,6 +4,8 @@ Transform this HTML template into a simple TODO app in 10 minutes using Olives
 The HTML to edit is the index.html, and the JavaScript file is app/todo.js.
 Starting with these two, the goal is to develop a simple todo application in 10 minutes.
 
+See the demo app here: http://podefr.github.com/olives-demo-10-mins/
+
 Here are the minutes:
 
 0:00 - 0:30:
