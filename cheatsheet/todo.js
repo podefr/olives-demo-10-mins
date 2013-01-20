@@ -29,7 +29,7 @@ function (Store, OObject, Event, Bind) {
 
 	 	var bind = new Bind(list, {
 	 		getId: function (item) {
-	 			this.innerHTML = list.alter("indexOf", item);
+	 			this.innerHTML = list.alter( 'indexOf', item );
 	 		}
 	 	});
 
@@ -39,8 +39,8 @@ function (Store, OObject, Event, Bind) {
 	 		'event': event,
 	 		'bind': bind,
 	 		'custom': {
-	 			prepend: function (node, text) {
-	 				node.innerHTML = text + " " + node.innerHTML;
+	 			color: function (node, color) {
+	 				node.style.backgroundColor = color;
 	 			}
 	 		}
 	 	});

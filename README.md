@@ -147,7 +147,7 @@ list.sync("todo-demo");
 As we still have some time left, let's write our own plugin
 
 ```html
-<td data-bind="bind: innerHTML" data-custom="prepend: hello">Name</td>
+<td data-bind="bind: innerHTML" data-custom="color: green">Name</td>
 ```
 
 ```js
