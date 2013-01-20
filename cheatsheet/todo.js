@@ -39,8 +39,8 @@ function (Store, OObject, Event, Bind) {
 	 		'event': event,
 	 		'bind': bind,
 	 		'custom': {
-	 			prepend: function (node, text) {
-	 				node.innerHTML = text + " " + node.innerHTML;
+	 			color: function (node, color) {
+	 				node.style.backgroundColor = color;
 	 			}
 	 		}
 	 	});
