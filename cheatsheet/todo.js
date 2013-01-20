@@ -29,7 +29,7 @@ function (Store, OObject, Event, Bind) {
 
 	 	var bind = new Bind(list, {
 	 		getId: function (item) {
-	 			this.innerHTML = list.alter( 'indexOf', item );
+	 			this.innerHTML = list.alter("indexOf", item);
 	 		}
 	 	});
 
