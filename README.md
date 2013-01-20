@@ -1,6 +1,11 @@
 Transform this HTML template into a simple TODO app in 10 minutes using Olives
 ==============================================================================
 
+The HTML to edit is the index.html, and the JavaScript file is app/todo.js.
+Starting with these two, the goal is to develop a simple todo application in 10 minutes.
+
+Here are the minutes:
+
 0:00 - 0:30:
 ------------
 
@@ -11,18 +16,49 @@ Requiring the needed stuff:
 	* The Event Plugin
 	* The Bind Plugin
 
+```js
+define(
+[
+	'Store',
+	'OObject',
+	'Event.plugin',
+	'Bind.plugin'
+],
 
-0:30 - 1:30
+function (Store, OObject, Event, Bind) {
+```
+
+
+0:30 - 2:30
 -----------
 
 Initializing it:
 
 	* A container for the widget (new OObject)
+
+```js
+var widget = new OObject();
+```
+
 	* A model for the list (new Store([]))
+
+```js
+var list = new Store([]);
+```
+
 	* A plugin for capturing DOM events
+
+```js
+var event = new Event();
+```
+
 	* A plugin for binding the data with the dom
 
-1:30 - 2:30
+```js
+var bind = new Bind();
+```
+
+2:30 - 3:30
 -----------
 
 Adding a handler for key events on the input field that would add a task
@@ -30,26 +66,26 @@ Adding a handler for key events on the input field that would add a task
 ```js
 var event = new Event({
 	addTask: function (event, node) {
-		if (event.keyCode == 13) {
-			list.alter("push", node.value);
+		if ( event.keyCode == 13 ) {
+			list.alter( 'push', node.value );
 			node.value = '';
 		}
 	}
 });
 ```
 
-2:30 - 3:30
+3:30 - 4:30
 -----------
 
 Adding a handler for key events on the remove icon
 
 ```js
 removeTask: function (event, node) {
-	list.del( node.getAttribute('data-demo_id') );
+	list.del( node.getAttribute('data-bind_id') );
 }
 ```
 
-3:30 - 5:00
+4:30 - 6:30
 ------------
 
 Binding the data with the dom
@@ -72,7 +108,7 @@ var bind = new Bind(list, {
 });
 ```
 
-5:00 - 7:00
+6:30 - 8:00
 -----------
 
 Binding the event handlers with the dom
@@ -85,7 +121,7 @@ Binding the event handlers with the dom
 <a href="#" data-event="listen: click, removeTask"><i class="icon-remove"></i></a>
 ```
 
-7:00 - 7:30
+8:00 - 8:30
 -----------
 
 Applying the plugins to the dom:
@@ -94,8 +130,8 @@ Applying the plugins to the dom:
 widget.alive(dom);
 ```
 
-7:30 - Oops, we have 2:30 left!
-------------------------
+8:30 - Oops, we have 1:30 left!
+--------------------------------
 
 We would like to persist the todo list. Let's use Olives LocalStore
 
@@ -103,7 +139,7 @@ We would like to persist the todo list. Let's use Olives LocalStore
 list.sync("todo-demo");
 ```
 
-8:00 - 10:00
+8:30 - 9:00
 ------------
 
 As we still have some time left, let's write our own plugin
@@ -123,6 +159,8 @@ widget.plugins.addAll({
 	 		}
 	 	});
 ```
+
+
 
 
 
