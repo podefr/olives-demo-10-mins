@@ -2,22 +2,20 @@
 	<header>
 		<title>hello</title>
 		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<style type="text/css">
+		</style>
 	</header>
 	<body>
 
-		<div class="navbar navbar-inverse navbar-fixed top">
-			<div class="navbar-inner">
-				<div class="container-fluid">
-					<a href="#" class="brand">Olives demo</a>
-				</div>
-			</div>
+		<div class="page-header">
+		  <h1>10 mins todo application using Olives<small> <a href="https://github.com/podefr/olives-demo-10-mins">checkout on GitHub</a></small></h1>
 		</div>
 
 
 		<div class="widget">
 
 			<div class="container">
-				<input class="input-xxlarge" id="appendedInputButton" type="text" style="height: 30px" placeholder="What's to be done?" data-event="listen: keydown, addTask">
+				<input class="input-xxlarge" id="appendedInputButton" type="text" style="height: 30px" placeholder="What's to be done?">
 			</div>
 
 			<div class="container">
@@ -29,11 +27,11 @@
 							<th>Action</th>
 						</tr>
 					</thead>
-					<tbody data-bind="foreach">
+					<tbody>
 						<tr>
-							<td data-bind="bind: getId">id</td>
-							<td data-bind="bind: innerHTML" data-custom="prepend: hello">Name</td>
-							<td><a href="#" data-event="listen: click, removeTask"><i class="icon-remove"></i></a></td>
+							<td>id</td>
+							<td>Name</td>
+							<td><a href="#"><i class="icon-remove"></i></a></td>
 						</tr>
 					</tbody>
 				</table>
