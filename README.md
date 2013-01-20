@@ -8,10 +8,38 @@ See the demo app here: http://podefr.github.com/olives-demo-10-mins/
 
 Here are the minutes:
 
-0:00 - 0:30:
+0:00 - 1:00
+-----------
+
+DOM Event handlers for adding/removing a task
+
+```html
+<input class="input-xxlarge" id="appendedInputButton" type="text" style="height: 30px" placeholder="What's to be done?" data-event="listen: keydown, addTask">
+```
+
+```html
+<a href="#" data-event="listen: click, removeTask"><i class="icon-remove"></i></a>
+```
+
+1:00 - 2:00
+-----------
+
+Data binding between the HTML and the JS
+
+```html
+<tbody data-bind="foreach">
+	<tr>
+		<td data-bind="bind: getId">id</td>
+		<td data-bind="bind: innerHTML">Name</td>
+		<td><a href="#" data-event="listen: click, removeTask"><i class="icon-remove"></i></a></td>
+	</tr>
+</tbody>
+```
+
+2:00 - 2:30:
 ------------
 
-Requiring the needed stuff:
+Requiring the needed stuff in todo.js:
 
 	* A store
 	* An OObject
@@ -31,7 +59,7 @@ function ( Store, OObject, Event, Bind ) {
 ```
 
 
-0:30 - 2:30
+2:30 - 4:30
 -----------
 
 Initializing it:
@@ -42,7 +70,7 @@ A container for the widget (new OObject)
 var widget = new OObject();
 ```
 
-A model for the list (new Store([]))
+A model for the list
 
 ```js
 var list = new Store( [] );
@@ -60,10 +88,10 @@ A plugin for binding the data with the dom
 var bind = new Bind();
 ```
 
-2:30 - 3:30
+4:30 - 5:30
 -----------
 
-Adding a handler for key events on the input field that would add a task
+Adding a task
 
 ```js
 var event = new Event({
@@ -76,10 +104,10 @@ var event = new Event({
 });
 ```
 
-3:30 - 4:30
+5:30 - 6:30
 -----------
 
-Adding a handler for key events on the remove icon
+Removing a task
 
 ```js
 removeTask: function ( event, node ) {
@@ -87,20 +115,11 @@ removeTask: function ( event, node ) {
 }
 ```
 
-4:30 - 6:30
+6:30 - 7:30
 ------------
 
-Binding the data with the dom
-
-```html
-<tbody data-bind="foreach">
-	<tr>
-		<td data-bind="bind: getId">id</td>
-		<td data-bind="bind: innerHTML">Name</td>
-		<td><a href="#"><i class="icon-remove"></i></a></td>
-	</tr>
-</tbody>
-```
+The Data binder comes with built-in features, like foreach.
+You can also define your own handlers
 
 ```js
 var bind = new Bind(list, {
@@ -110,17 +129,16 @@ var bind = new Bind(list, {
 });
 ```
 
-6:30 - 8:00
+7:30 - 8:00
 -----------
 
-Binding the event handlers with the dom
+Adding the plugins to the widget:
 
-```html
-<input class="input-xxlarge" id="appendedInputButton" type="text" style="height: 30px" placeholder="What's to be done?" data-event="listen: keydown, addTask">
-```
-
-```html
-<a href="#" data-event="listen: click, removeTask"><i class="icon-remove"></i></a>
+```js
+widget.plugins.addAll({
+	'event': event,
+	'bind': bind
+});
 ```
 
 8:00 - 8:30
@@ -137,11 +155,18 @@ widget.alive( dom );
 
 We would like to persist the todo list. Let's use Olives LocalStore
 
+Replace Store by LocalStore
+
+```js
+	'LocalStore'
+```
+And sync it with localStorage
+
 ```js
 list.sync( 'todo-demo' );
 ```
 
-8:30 - 9:00
+8:30 - 10:00
 ------------
 
 As we still have some time left, let's write our own plugin
