@@ -27,7 +27,7 @@ define(
 	'Bind.plugin'
 ],
 
-function (Store, OObject, Event, Bind) {
+function ( Store, OObject, Event, Bind ) {
 ```
 
 
@@ -45,7 +45,7 @@ var widget = new OObject();
 A model for the list (new Store([]))
 
 ```js
-var list = new Store([]);
+var list = new Store( [] );
 ```
 
 A plugin for capturing DOM events
@@ -67,7 +67,7 @@ Adding a handler for key events on the input field that would add a task
 
 ```js
 var event = new Event({
-	addTask: function (event, node) {
+	addTask: function ( event, node ) {
 		if ( event.keyCode == 13 ) {
 			list.alter( 'push', node.value );
 			node.value = '';
@@ -82,7 +82,7 @@ var event = new Event({
 Adding a handler for key events on the remove icon
 
 ```js
-removeTask: function (event, node) {
+removeTask: function ( event, node ) {
 	list.del( node.getAttribute('data-bind_id') );
 }
 ```
@@ -104,8 +104,8 @@ Binding the data with the dom
 
 ```js
 var bind = new Bind(list, {
-	getId: function (item) {
-		this.innerHTML = list.alter("indexOf", item);
+	getId: function ( item ) {
+		this.innerHTML = list.alter( 'indexOf', item);
 	}
 });
 ```
@@ -129,7 +129,7 @@ Binding the event handlers with the dom
 Applying the plugins to the dom:
 
 ```js
-widget.alive(dom);
+widget.alive( dom );
 ```
 
 8:30 - Oops, we have 1:30 left!
@@ -147,19 +147,19 @@ list.sync("todo-demo");
 As we still have some time left, let's write our own plugin
 
 ```html
-<td data-bind="bind: innerHTML" data-custom="color: green">Name</td>
+<td data-bind="bind: innerHTML" data-custom="color: lightblue">Name</td>
 ```
 
 ```js
 widget.plugins.addAll({
-	 		'event': event,
-	 		'bind': bind,
-	 		'custom': {
-	 			prepend: function (node, text) {
-	 				node.innerHTML = text + " " + node.innerHTML;
-	 			}
-	 		}
-	 	});
+	'event': event,
+	'bind': bind,
+	'custom': {
+		color: function ( node, color ) {
+			node.style.backgroundColor = color;
+		}
+	}
+});
 ```
 
 
